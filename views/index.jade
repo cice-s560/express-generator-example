@@ -1,5 +1,53 @@
-extends layout
+doctype html
+head
+  title= 'Un título'
+body
+  // tag= 'contenido inner'
+  // tag contenido inner
+  h1 Mi primer Jade
+  header
+    nav
+      - let clases = ['link', 'azul']
 
-block content
-  h1= title
-  p Welcome to #{title}
+      a(href='http://google.com') Google
+      a(href='http://cice.es', title='Visita CICE', class=clases) CICE
+      a.link-simple(href='http://as.com') AS
+
+  section
+    header
+      h2 Switch
+    - let tecnologia = 'NodeJS'
+
+    case tecnologia
+      when 'PHP'
+        p Ya no mola tanto...pero sigue ahí (PHP 7)
+      when 'NodeJS'
+        p Este huele mejor
+      when 'GO'
+        p Este tiene mucho hype
+
+  section
+    header
+      h2 Condicional
+    - let edad = 18
+    - let isAdult = edad > 18
+
+    if isAdult
+      p Es adulto
+    else if edad === 18
+      p Hoy se hace adulto
+    else
+      p No es adulto
+
+  section
+    header
+      h2 Listado
+      - let lista = [1, 2, 3, 4, 5]
+      
+      each item in lista
+        // tag= -> Evalua el contenido JS, sin escapar
+        li= 'Item <b>' + item + '</b>'
+
+      each item in lista
+        // tag!= -> Evalua el contenido JS, escapando
+        li!= 'Item <b>' + item + '</b>'

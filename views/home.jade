@@ -1,0 +1,14 @@
+// Extenedemos de otro archivo. Pintamos lo que tuviera
+extends layout
+
+// Cuando extendemos colocamos nuestros bloques
+// dentro de los bloques del archivo extendido
+block content
+    section.section
+        header
+            h2 Hola clase #{clase}
+        p Soy contenido embebido
+
+        ul
+            each persona in nombres
+                li Hola #{persona}
